@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Soccer Ticketing System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>WVU Tech Soccer Ticketing System</h1>
+            <div class="user-info">
+                <span id="userName">Welcome, User</span>
+                <a href="index.html" class="logout-btn">Logout</a>
+            </div>
+        </header>
+        
+        <nav class="main-nav">
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="browse-games.html">Browse Games</a></li>
+                <li><a href="my-bookings.html">My Bookings</a></li>
+                <li><a href="profile.html" class="active">Manage Profile</a></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <div class="profile-container">
+                <h2>Manage Profile</h2>
+                
+                <div class="profile-info">
+                    <h3>Current Profile Information</h3>
+                    <p><strong>Username:</strong> <span id="profileUsername">sf00053</span></p>
+                    <p><strong>Email:</strong> <span id="profileEmail">sf00053@mix.wvu.edu</span></p>
+                    <p><strong>Role:</strong> <span id="profileRole">STUDENT</span></p>
+                    <p><strong>Discount:</strong> <span id="profileDiscount">10%</span></p>
+                </div>
+                
+                <div class="profile-actions">
+                    <button id="updateEmailBtn" class="btn">Update Email</button>
+                    <button id="changePasswordBtn" class="btn">Change Password</button>
+                    <button id="updateRoleBtn" class="btn">Update Role</button>
+                </div>
+                
+                <!-- Update Email Form - Initially Hidden -->
+                <div id="updateEmailForm" class="profile-form" style="display: none;">
+                    <h3>Update Email</h3>
+                    <form id="emailForm">
+                        <div class="form-group">
+                            <label for="newEmail">New Email:</label>
+                            <input type="email" id="newEmail" name="newEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="emailPassword">Password:</label>
+                            <input type="password" id="emailPassword" name="emailPassword" required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn secondary cancel-form">Cancel</button>
+                            <button type="submit" class="btn">Update Email</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Change Password Form - Initially Hidden -->
+                <div id="changePasswordForm" class="profile-form" style="display: none;">
+                    <h3>Change Password</h3>
+                    <form id="passwordForm">
+                        <div class="form-group">
+                            <label for="currentPassword">Current Password:</label>
+                            <input type="password" id="currentPassword" name="currentPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newPassword">New Password:</label>
+                            <input type="password" id="newPassword" name="newPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm New Password:</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn secondary cancel-form">Cancel</button>
+                            <button type="submit" class="btn">Update Password</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Update Role Form - Initially Hidden -->
+                <div id="updateRoleForm" class="profile-form" style="display: none;">
+                    <h3>Update Role</h3>
+                    <form id="roleForm">
+                        <div class="form-group">
+                            <label for="newRole">Select New Role:</label>
+                            <select id="newRole" name="newRole" required>
+                                <option value="STUDENT">Student</option>
+                                <option value="FACULTY">Faculty</option>
+                                <option value="FAMILY">Family</option>
+                                <option value="REGULAR">Regular</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="rolePassword">Password:</label>
+                            <input type="password" id="rolePassword" name="rolePassword" required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn secondary cancel-form">Cancel</button>
+                            <button type="submit" class="btn">Update Role</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 WVU Tech Soccer Ticketing System</p>
+        </footer>
+    </div>
+    
+    <script src="scripts.js"></script>
+    <script>
+        // Simulate loading user data
+        document.getElementById('userName').textContent = 'Welcome, sf00053';
+        document.getElementById('profileUsername').textContent = 'sf00053';
+        document.getElementById('profileEmail').textContent = 'sf00053@mix.wvu.edu';
+        document.getElementById('profileRole').textContent = 'STUDENT';
+        document.getElementById('profileDiscount').textContent = '10%';
+        
+        // Handle form toggling
+        document.getElementById('updateEmailBtn').addEventListener('click', function() {
+            hideAllForms();
+            document.getElementById('updateEmailForm').style.display = 'block';
+        });
+        
+        document.getElementById('changePasswordBtn').addEventListener('click', function() {
+            hideAllForms();
+            document.getElementById('changePasswordForm').style.display = 'block';
+        });
+        
+        document.getElementById('updateRoleBtn').addEventListener('click', function() {
+            hideAllForms();
+            document.getElementById('updateRoleForm').style.display = 'block';
+        });
+        
+        // Add event listeners to all cancel buttons
+        document.querySelectorAll('.cancel-form').forEach(button => {
+            button.addEventListener('click', hideAllForms);
+        });
+        
+        function hideAllForms() {
+            document.querySelectorAll('.profile-form').forEach(form => {
+                form.style.display = 'none';
+            });
+        }
+        
+        // Handle form submissions
+        document.getElementById('emailForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const newEmail = document.getElementById('newEmail').value;
+            
+            // In a real app, you would send this to the server
+            // For demo purposes, we'll just update the UI
+            document.getElementById('profileEmail').textContent = newEmail;
+            alert('Email updated successfully!');
+            hideAllForms();
+        });
+        
+        document.getElementById('passwordForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (newPassword !== confirmPassword) {
+                alert('Passwords do not match. Please try again.');
+                return;
+            }
+            
+            // In a real app, you would send this to the server
+            alert('Password updated successfully!');
+            hideAllForms();
+        });
+        
+        document.getElementById('roleForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const newRole = document.getElementById('newRole').value;
+            
+            // Calculate new discount based on role
+            let discount = '0%';
+            switch(newRole) {
+                case 'STUDENT':
+                case 'FACULTY':
+                    discount = '10%';
+                    break;
+                case 'FAMILY':
+                    discount = '15%';
+                    break;
+                default:
+                    discount = '0%';
+            }
+            
+            // In a real app, you would send this to the server
+            // For demo purposes, we'll just update the UI
+            document.getElementById('profileRole').textContent = newRole;
+            document.getElementById('profileDiscount').textContent = discount;
+            alert('Role updated successfully!');
+            hideAllForms();
+        });
+    </script>
+</body>
+</html>

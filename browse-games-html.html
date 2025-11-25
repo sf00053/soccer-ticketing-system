@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Games - Soccer Ticketing System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>WVU Tech Soccer Ticketing System</h1>
+            <div class="user-info">
+                <span id="userName">Welcome, User</span>
+                <a href="index.html" class="logout-btn">Logout</a>
+            </div>
+        </header>
+        
+        <nav class="main-nav">
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="browse-games.html" class="active">Browse Games</a></li>
+                <li><a href="my-bookings.html">My Bookings</a></li>
+                <li><a href="profile.html">Manage Profile</a></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <div class="browse-games-container">
+                <h2>Browse Games</h2>
+                
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="gameType">Game Type:</label>
+                        <select id="gameType">
+                            <option value="all">All</option>
+                            <option value="home">Home Games</option>
+                            <option value="away">Away Games</option>
+                            <option value="indoor">Indoor</option>
+                            <option value="outdoor">Outdoor</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="dateRange">Date Range:</label>
+                        <select id="dateRange">
+                            <option value="all">All Dates</option>
+                            <option value="upcoming">Upcoming</option>
+                            <option value="thisMonth">This Month</option>
+                            <option value="nextMonth">Next Month</option>
+                        </select>
+                    </div>
+                    
+                    <button id="applyFilters" class="btn">Apply Filters</button>
+                </div>
+                
+                <div class="games-list">
+                    <table class="games-table">
+                        <thead>
+                            <tr>
+                                <th>Game</th>
+                                <th>Date</th>
+                                <th>Stadium</th>
+                                <th>Type</th>
+                                <th>Available Seats</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>WVU Tech Women Soccer vs Kokomo University Women Soccer</td>
+                                <td>2025-05-04 15:00</td>
+                                <td>YMCA Complex</td>
+                                <td>Home (Outdoor)</td>
+                                <td>30/100</td>
+                                <td><a href="seat-selection.html?game=1" class="btn small">Book Tickets</a></td>
+                            </tr>
+                            <tr>
+                                <td>WVU Tech Women Soccer vs Bluefield State Women Soccer</td>
+                                <td>2025-05-11 14:00</td>
+                                <td>YMCA Complex</td>
+                                <td>Home (Outdoor)</td>
+                                <td>45/100</td>
+                                <td><a href="seat-selection.html?game=2" class="btn small">Book Tickets</a></td>
+                            </tr>
+                            <tr>
+                                <td>IU East Women Soccer vs WVU Tech Women Soccer</td>
+                                <td>2025-05-18 16:30</td>
+                                <td>IU East Stadium</td>
+                                <td>Away (Outdoor)</td>
+                                <td>20/80</td>
+                                <td><a href="seat-selection.html?game=3" class="btn small">Book Tickets</a></td>
+                            </tr>
+                            <tr>
+                                <td>Shaw University Women Soccer vs WVU Tech Women Soccer</td>
+                                <td>2025-05-25 14:00</td>
+                                <td>Shaw University Stadium</td>
+                                <td>Away (Outdoor)</td>
+                                <td>15/50</td>
+                                <td><a href="seat-selection.html?game=4" class="btn small">Book Tickets</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 WVU Tech Soccer Ticketing System</p>
+        </footer>
+    </div>
+    
+    <script src="scripts.js"></script>
+    <script>
+        // Simulate user data
+        document.getElementById('userName').textContent = 'Welcome, User';
+        
+        // Handle filter application
+        document.getElementById('applyFilters').addEventListener('click', function() {
+            const gameType = document.getElementById('gameType').value;
+            const dateRange = document.getElementById('dateRange').value;
+            
+            // In a real app, this would filter the games based on selection
+            console.log(`Filtering by: ${gameType}, ${dateRange}`);
+            // Here you would make an AJAX call to get filtered results
+            alert('Filters applied! (This is a simulation)');
+        });
+    </script>
+</body>
+</html>

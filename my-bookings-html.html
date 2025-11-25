@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings - Soccer Ticketing System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>WVU Tech Soccer Ticketing System</h1>
+            <div class="user-info">
+                <span id="userName">Welcome, User</span>
+                <a href="index.html" class="logout-btn">Logout</a>
+            </div>
+        </header>
+        
+        <nav class="main-nav">
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="browse-games.html">Browse Games</a></li>
+                <li><a href="my-bookings.html" class="active">My Bookings</a></li>
+                <li><a href="profile.html">Manage Profile</a></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <div class="my-bookings-container">
+                <h2>My Bookings</h2>
+                
+                <div class="bookings-list">
+                    <div class="booking-card">
+                        <div class="booking-header">
+                            <h3>Booking #123456</h3>
+                            <span class="booking-status confirmed">Confirmed</span>
+                        </div>
+                        
+                        <div class="booking-details">
+                            <div class="booking-info">
+                                <p><strong>Game:</strong> WVU Tech Women Soccer vs Kokomo University Women Soccer</p>
+                                <p><strong>Date:</strong> 2025-05-04 15:00</p>
+                                <p><strong>Stadium:</strong> YMCA Complex</p>
+                                <p><strong>Section:</strong> 2, Seat: 14</p>
+                                <p><strong>Price Paid:</strong> $21.60</p>
+                                <p><strong>Payment Status:</strong> Completed</p>
+                            </div>
+                            
+                            <div class="booking-actions">
+                                <button class="btn view-ticket">View Ticket</button>
+                                <button class="btn cancel-booking">Cancel Booking</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="booking-card">
+                        <div class="booking-header">
+                            <h3>Booking #123457</h3>
+                            <span class="booking-status confirmed">Confirmed</span>
+                        </div>
+                        
+                        <div class="booking-details">
+                            <div class="booking-info">
+                                <p><strong>Game:</strong> WVU Tech Women Soccer vs Bluefield State Women Soccer</p>
+                                <p><strong>Date:</strong> 2025-05-11 14:00</p>
+                                <p><strong>Stadium:</strong> YMCA Complex</p>
+                                <p><strong>Section:</strong> 1, Seat: 8</p>
+                                <p><strong>Price Paid:</strong> $27.00</p>
+                                <p><strong>Payment Status:</strong> Completed</p>
+                            </div>
+                            
+                            <div class="booking-actions">
+                                <button class="btn view-ticket">View Ticket</button>
+                                <button class="btn cancel-booking">Cancel Booking</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Example of a cancelled booking -->
+                    <div class="booking-card cancelled">
+                        <div class="booking-header">
+                            <h3>Booking #123458</h3>
+                            <span class="booking-status cancelled">Cancelled</span>
+                        </div>
+                        
+                        <div class="booking-details">
+                            <div class="booking-info">
+                                <p><strong>Game:</strong> IU East Women Soccer vs WVU Tech Women Soccer</p>
+                                <p><strong>Date:</strong> 2025-05-18 16:30</p>
+                                <p><strong>Stadium:</strong> IU East Stadium</p>
+                                <p><strong>Section:</strong> 2, Seat: 5</p>
+                                <p><strong>Refund Amount:</strong> $27.00</p>
+                                <p><strong>Payment Status:</strong> Refunded</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ticket modal - hidden by default -->
+                <div id="ticketModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h3>Your Ticket</h3>
+                        <div class="ticket-display">
+                            <div class="ticket">
+                                <div class="ticket-header">
+                                    <h4>WVU Tech Soccer</h4>
+                                    <p class="ticket-game">WVU Tech Women Soccer vs Kokomo University Women Soccer</p>
+                                </div>
+                                
+                                <div class="ticket-body">
+                                    <div class="ticket-details">
+                                        <p><strong>Date & Time:</strong> 2025-05-04 15:00</p>
+                                        <p><strong>Stadium:</strong> YMCA Complex</p>
+                                        <p><strong>Section:</strong> 2</p>
+                                        <p><strong>Seat:</strong> 14</p>
+                                    </div>
+                                    
+                                    <div class="ticket-qr">
+                                        <!-- Placeholder for QR code -->
+                                        <div class="qr-placeholder">QR Code</div>
+                                        <p class="ticket-id">Booking #123456</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="ticket-footer">
+                                    <p>Please present this ticket at the entrance.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="ticket-actions">
+                            <button id="downloadTicketBtn" class="btn">Download</button>
+                            <button id="emailTicketBtn" class="btn">Email</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Confirmation modal for cancellation - hidden by default -->
+                <div id="cancelModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h3>Cancel Booking</h3>
+                        <p>Are you sure you want to cancel your booking for:</p>
+                        <p id="cancelGameName">WVU Tech Women Soccer vs Kokomo University Women Soccer</p>
+                        <p><strong>Note:</strong> A full refund will be processed to your original payment method.</p>
+                        
+                        <div class="modal-actions">
+                            <button id="confirmCancelBtn" class="btn danger">Yes, Cancel Booking</button>
+                            <button id="cancelCancelBtn" class="btn secondary">No, Keep Booking</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 WVU Tech Soccer Ticketing System</p>
+        </footer>
+    </div>
+    
+    <script src="scripts.js"></script>
+    <script>
+        // Simulate loading user data
+        document.getElementById('userName').textContent = 'Welcome, Student';
+        
+        // Handle view ticket buttons
+        const viewTicketBtns = document.querySelectorAll('.view-ticket');
+        const ticketModal = document.getElementById('ticketModal');
+        const closeTicketModal = ticketModal.querySelector('.close-modal');
+        
+        viewTicketBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                ticketModal.style.display = 'block';
+                // In a real app, you would load the specific ticket details
+            });
+        });
+        
+        closeTicketModal.addEventListener('click', function() {
+            ticketModal.style.display = 'none';
+        });
+        
+        // Handle cancel booking buttons
+        const cancelBookingBtns = document.querySelectorAll('.cancel-booking');
+        const cancelModal = document.getElementById('cancelModal');
+        const closeCancelModal = cancelModal.querySelector('.close-modal');
+        const confirmCancelBtn = document.getElementById('confirmCancelBtn');
+        const cancelCancelBtn = document.getElementById('cancelCancelBtn');
+        
+        cancelBookingBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const gameElement = this.closest('.booking-card').querySelector('.booking-info p:first-child');
+                const gameName = gameElement.textContent.replace('Game:', '').trim();
+                document.getElementById('cancelGameName').textContent = gameName;
+                cancelModal.style.display = 'block';
+            });
+        });
+        
+        closeCancelModal.addEventListener('click', function() {
+            cancelModal.style.display = 'none';
+        });
+        
+        cancelCancelBtn.addEventListener('click', function() {
+            cancelModal.style.display = 'none';
+        });
+        
+        confirmCancelBtn.addEventListener('click', function() {
+            // In a real app, this would send a cancellation request to the server
+            alert('Booking has been cancelled. A refund has been initiated to your original payment method.');
+            cancelModal.style.display = 'none';
+            location.reload(); // In a real app, you would update the UI without reloading
+        });
+        
+        // Close modals when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === ticketModal) {
+                ticketModal.style.display = 'none';
+            }
+            if (event.target === cancelModal) {
+                cancelModal.style.display = 'none';
+            }
+        });
+        
+        // Handle ticket download and email buttons
+        document.getElementById('downloadTicketBtn').addEventListener('click', function() {
+            alert('Ticket download functionality would be implemented here.');
+        });
+        
+        document.getElementById('emailTicketBtn').addEventListener('click', function() {
+            alert('An email with your ticket has been sent to your registered email address.');
+        });
+    </script>
+</body>
+</html>

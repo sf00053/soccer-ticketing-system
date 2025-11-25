@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Soccer Ticketing System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>WVU Tech Soccer Ticketing System</h1>
+            <div class="user-info">
+                <span id="userName">Welcome, User</span>
+                <a href="index.html" class="logout-btn">Logout</a>
+            </div>
+        </header>
+        
+        <nav class="main-nav">
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="browse-games.html">Browse Games</a></li>
+                <li><a href="my-bookings.html">My Bookings</a></li>
+                <li><a href="profile.html">Manage Profile</a></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <div class="payment-container">
+                <h2>Payment</h2>
+                
+                <div class="payment-details">
+                    <div class="order-summary">
+                        <h3>Order Summary</h3>
+                        <div id="orderDetails">
+                            <p><strong>Game:</strong> <span id="gameName">WVU Tech Women Soccer vs Kokomo University Women Soccer</span></p>
+                            <p><strong>Date:</strong> <span id="gameDate">2025-05-04 15:00</span></p>
+                            <p><strong>Stadium:</strong> <span id="gameStadium">YMCA Complex</span></p>
+                            <p><strong>Section:</strong> <span id="seatSection">2</span></p>
+                            <p><strong>Seat:</strong> <span id="seatNumber">14</span></p>
+                            <p><strong>Original Price:</strong> $<span id="originalPrice">24.00</span></p>
+                            <p><strong>Your Discount:</strong> <span id="discountPercentage">10</span>%</p>
+                            <p><strong>Final Price:</strong> $<span id="discountedPrice">21.60</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-form">
+                        <h3>Payment Information</h3>
+                        <form id="paymentForm">
+                            <div class="form-group">
+                                <label for="cardName">Name on Card:</label>
+                                <input type="text" id="cardName" name="cardName" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="cardNumber">Card Number:</label>
+                                <input type="text" id="cardNumber" name="cardNumber" placeholder="XXXX-XXXX-XXXX-XXXX" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group half">
+                                    <label for="expiryDate">Expiry Date:</label>
+                                    <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
+                                </div>
+                                
+                                <div class="form-group half">
+                                    <label for="cvv">CVV:</label>
+                                    <input type="text" id="cvv" name="cvv" placeholder="XXX" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="billingAddress">Billing Address:</label>
+                                <textarea id="billingAddress" name="billingAddress" rows="3" required></textarea>
+                            </div>
+                            
+                            <div class="form-group checkbox">
+                                <input type="checkbox" id="savePaymentInfo" name="savePaymentInfo">
+                                <label for="savePaymentInfo">Save payment information for future purchases</label>
+                            </div>
+                            
+                            <div class="payment-actions">
+                                <a href="seat-selection.html" class="btn secondary">Go Back</a>
+                                <button type="submit" class="btn primary">Complete Payment</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 WVU Tech Soccer Ticketing System</p>
+        </footer>
+    </div>
+    
+    <script src="scripts.js"></script>
+    <script>
+        // Simulate loading user data
+        document.getElementById('userName').textContent = 'Welcome, Student';
+        
+        // In a real app, you would get this data from your session/API
+        // For demo, we'll retrieve from localStorage
+        window.addEventListener('load', function() {
+            const savedSelection = JSON.parse(localStorage.getItem('selectedSeat') || '{}');
+            
+            if (savedSelection.seatId) {
+                document.getElementById('seatSection').textContent = savedSelection.section || '2';
+                document.getElementById('seatNumber').textContent = savedSelection.seatId || '14';
+                
+                const originalPrice = parseFloat(savedSelection.price || 24.00);
+                const discount = 10; // For student role
+                const discountedPrice = (originalPrice * (1 - discount/100)).toFixed(2);
+                
+                document.getElementById('originalPrice').textContent = originalPrice.toFixed(2);
+                document.getElementById('discountedPrice').textContent = discountedPrice;
+            }
+        });
+        
+        // Handle form submission
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real app, you would process payment here
+            // For demo, we'll simulate a successful payment
+            alert('Payment processing... Please wait.');
+            
+            // Simulate server response delay
+            setTimeout(function() {
+                // Generate random booking ID and payment ID
+                const bookingId = Math.floor(100000 + Math.random() * 900000);
+                const paymentId = Math.floor(100000 + Math.random() * 900000);
+                
+                // Store booking details in localStorage for demo
+                localStorage.setItem('lastBooking', JSON.stringify({
+                    bookingId: bookingId,
+                    paymentId: paymentId,
+                    game: document.getElementById('gameName').textContent,
+                    date: document.getElementById('gameDate').textContent,
+                    section: document.getElementById('seatSection').textContent,
+                    seat: document.getElementById('seatNumber').textContent,
+                    price: document.getElementById('discountedPrice').textContent
+                }));
+                
+                // Redirect to confirmation page
+                window.location.href = 'booking-confirmation.html';
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

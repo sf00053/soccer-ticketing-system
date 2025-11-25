@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation - Soccer Ticketing System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>WVU Tech Soccer Ticketing System</h1>
+            <div class="user-info">
+                <span id="userName">Welcome, User</span>
+                <a href="index.html" class="logout-btn">Logout</a>
+            </div>
+        </header>
+        
+        <nav class="main-nav">
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="browse-games.html">Browse Games</a></li>
+                <li><a href="my-bookings.html">My Bookings</a></li>
+                <li><a href="profile.html">Manage Profile</a></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <div class="confirmation-container">
+                <div class="confirmation-message">
+                    <h2>Booking Confirmed!</h2>
+                    <p class="success-message">Your payment was successful and your ticket has been booked.</p>
+                    
+                    <div class="booking-details">
+                        <h3>Booking Details</h3>
+                        <p><strong>Booking ID:</strong> <span id="bookingId">123456</span></p>
+                        <p><strong>Payment ID:</strong> <span id="paymentId">789012</span></p>
+                        <p><strong>Game:</strong> <span id="gameName">WVU Tech Women Soccer vs Kokomo University Women Soccer</span></p>
+                        <p><strong>Date:</strong> <span id="gameDate">2025-05-04 15:00</span></p>
+                        <p><strong>Stadium:</strong> <span id="gameStadium">YMCA Complex</span></p>
+                        <p><strong>Section:</strong> <span id="seatSection">2</span></p>
+                        <p><strong>Seat:</strong> <span id="seatNumber">14</span></p>
+                        <p><strong>Amount Paid:</strong> $<span id="amountPaid">21.60</span></p>
+                    </div>
+                    
+                    <div class="ticket-actions">
+                        <button id="downloadTicket" class="btn primary">Download Ticket</button>
+                        <button id="emailTicket" class="btn secondary">Email Ticket</button>
+                    </div>
+                    
+                    <div class="next-steps">
+                        <p>Your ticket has been added to your bookings. You can view or manage it anytime from the "My Bookings" section.</p>
+                        <div class="action-links">
+                            <a href="dashboard.html" class="btn">Go to Dashboard</a>
+                            <a href="my-bookings.html" class="btn">View My Bookings</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 WVU Tech Soccer Ticketing System</p>
+        </footer>
+    </div>
+    
+    <script src="scripts.js"></script>
+    <script>
+        // Simulate loading user data
+        document.getElementById('userName').textContent = 'Welcome, Student';
+        
+        // In a real app, you would get this data from your session/API
+        // For demo, we'll retrieve from localStorage
+        window.addEventListener('load', function() {
+            const bookingDetails = JSON.parse(localStorage.getItem('lastBooking') || '{}');
+            
+            if (bookingDetails.bookingId) {
+                document.getElementById('bookingId').textContent = bookingDetails.bookingId;
+                document.getElementById('paymentId').textContent = bookingDetails.paymentId;
+                document.getElementById('gameName').textContent = bookingDetails.game;
+                document.getElementById('gameDate').textContent = bookingDetails.date;
+                document.getElementById('seatSection').textContent = bookingDetails.section;
+                document.getElementById('seatNumber').textContent = bookingDetails.seat;
+                document.getElementById('amountPaid').textContent = bookingDetails.price;
+            }
+        });
+        
+        // Handle download ticket button
+        document.getElementById('downloadTicket').addEventListener('click', function() {
+            // In a real app, this would generate and download a PDF ticket
+            alert('Ticket download functionality would be implemented here.');
+        });
+        
+        // Handle email ticket button
+        document.getElementById('emailTicket').addEventListener('click', function() {
+            // In a real app, this would send the ticket to the user's email
+            alert('An email with your ticket has been sent to your registered email address.');
+        });
+    </script>
+</body>
+</html>

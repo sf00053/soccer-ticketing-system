@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat Selection - Soccer Ticketing System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>WVU Tech Soccer Ticketing System</h1>
+            <div class="user-info">
+                <span id="userName">Welcome, User</span>
+                <a href="index.html" class="logout-btn">Logout</a>
+            </div>
+        </header>
+        
+        <nav class="main-nav">
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="browse-games.html">Browse Games</a></li>
+                <li><a href="my-bookings.html">My Bookings</a></li>
+                <li><a href="profile.html">Manage Profile</a></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <div class="seat-selection-container">
+                <div class="game-details">
+                    <h2>Seat Selection</h2>
+                    <div class="game-info">
+                        <h3 id="gameName">WVU Tech Women Soccer vs Kokomo University Women Soccer</h3>
+                        <p><strong>Date:</strong> <span id="gameDate">2025-05-04 15:00</span></p>
+                        <p><strong>Stadium:</strong> <span id="gameStadium">YMCA Complex</span></p>
+                        <p><strong>Type:</strong> <span id="gameType">Home (Outdoor)</span></p>
+                    </div>
+                </div>
+                
+                <div class="seating-layout">
+                    <h3>Select Your Seat</h3>
+                    
+                    <div class="stadium-view">
+                        <div class="field">Soccer Field</div>
+                        
+                        <div class="seating-sections">
+                            <div class="section" id="section1">
+                                <h4>Section 1 (Premium)</h4>
+                                <div class="seats">
+                                    <div class="seat available" data-seat-id="1" data-section="1" data-price="30.00">1</div>
+                                    <div class="seat available" data-seat-id="2" data-section="1" data-price="30.00">2</div>
+                                    <div class="seat available" data-seat-id="3" data-section="1" data-price="30.00">3</div>
+                                    <div class="seat available" data-seat-id="4" data-section="1" data-price="30.00">4</div>
+                                    <div class="seat available" data-seat-id="5" data-section="1" data-price="30.00">5</div>
+                                    <div class="seat booked" data-seat-id="6" data-section="1" data-price="30.00">6</div>
+                                    <div class="seat booked" data-seat-id="7" data-section="1" data-price="30.00">7</div>
+                                    <div class="seat available" data-seat-id="8" data-section="1" data-price="30.00">8</div>
+                                    <div class="seat available" data-seat-id="9" data-section="1" data-price="30.00">9</div>
+                                    <div class="seat available" data-seat-id="10" data-section="1" data-price="30.00">10</div>
+                                </div>
+                            </div>
+                            
+                            <div class="section" id="section2">
+                                <h4>Section 2 (Mid-tier)</h4>
+                                <div class="seats">
+                                    <div class="seat available" data-seat-id="11" data-section="2" data-price="24.00">1</div>
+                                    <div class="seat available" data-seat-id="12" data-section="2" data-price="24.00">2</div>
+                                    <div class="seat booked" data-seat-id="13" data-section="2" data-price="24.00">3</div>
+                                    <div class="seat available" data-seat-id="14" data-section="2" data-price="24.00">4</div>
+                                    <div class="seat available" data-seat-id="15" data-section="2" data-price="24.00">5</div>
+                                    <div class="seat booked" data-seat-id="16" data-section="2" data-price="24.00">6</div>
+                                    <div class="seat available" data-seat-id="17" data-section="2" data-price="24.00">7</div>
+                                    <div class="seat available" data-seat-id="18" data-section="2" data-price="24.00">8</div>
+                                    <div class="seat available" data-seat-id="19" data-section="2" data-price="24.00">9</div>
+                                    <div class="seat booked" data-seat-id="20" data-section="2" data-price="24.00">10</div>
+                                </div>
+                            </div>
+                            
+                            <div class="section" id="section3">
+                                <h4>Section 3 (Standard)</h4>
+                                <div class="seats">
+                                    <div class="seat booked" data-seat-id="21" data-section="3" data-price="20.00">1</div>
+                                    <div class="seat available" data-seat-id="22" data-section="3" data-price="20.00">2</div>
+                                    <div class="seat available" data-seat-id="23" data-section="3" data-price="20.00">3</div>
+                                    <div class="seat available" data-seat-id="24" data-section="3" data-price="20.00">4</div>
+                                    <div class="seat available" data-seat-id="25" data-section="3" data-price="20.00">5</div>
+                                    <div class="seat available" data-seat-id="26" data-section="3" data-price="20.00">6</div>
+                                    <div class="seat booked" data-seat-id="27" data-section="3" data-price="20.00">7</div>
+                                    <div class="seat booked" data-seat-id="28" data-section="3" data-price="20.00">8</div>
+                                    <div class="seat available" data-seat-id="29" data-section="3" data-price="20.00">9</div>
+                                    <div class="seat available" data-seat-id="30" data-section="3" data-price="20.00">10</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="legend">
+                            <div class="legend-item">
+                                <div class="seat-sample available"></div>
+                                <span>Available</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="seat-sample booked"></div>
+                                <span>Booked</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="seat-sample selected"></div>
+                                <span>Selected</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="selection-summary">
+                    <h3>Your Selection</h3>
+                    <div id="selectionDetails">
+                        <p>No seat selected</p>
+                    </div>
+                    
+                    <div id="priceSummary" style="display: none;">
+                        <p><strong>Section:</strong> <span id="selectedSection"></span></p>
+                        <p><strong>Seat:</strong> <span id="selectedSeat"></span></p>
+                        <p><strong>Original Price:</strong> $<span id="originalPrice"></span></p>
+                        <p><strong>Your Discount:</strong> <span id="discountPercentage">10</span>%</p>
+                        <p><strong>Final Price:</strong> $<span id="discountedPrice"></span></p>
+                        
+                        <button id="proceedToCheckout" class="btn large">Proceed to Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 WVU Tech Soccer Ticketing System</p>
+        </footer>
+    </div>
+    
+    <script src="scripts.js"></script>
+    <script>
+        // Simulate loading user data
+        document.getElementById('userName').textContent = 'Welcome, Student';
+        
+        // Get game information from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const gameId = urlParams.get('game') || '1';
+        
+        // In a real app, you would fetch game details based on the gameId
+        // For demo purposes, we'll just use the default values
+        
+        // Seat selection logic
+        const availableSeats = document.querySelectorAll('.seat.available');
+        let selectedSeat = null;
+        
+        availableSeats.forEach(seat => {
+            seat.addEventListener('click', function() {
+                // Deselect previously selected seat
+                if (selectedSeat) {
+                    selectedSeat.classList.remove('selected');
+                }
+                
+                // Select this seat
+                this.classList.add('selected');
+                selectedSeat = this;
+                
+                // Update selection details
+                const seatId = this.getAttribute('data-seat-id');
+                const section = this.getAttribute('data-section');
+                const price = parseFloat(this.getAttribute('data-price'));
+                const discount = 10; // Example discount percentage for student
+                const discountedPrice = (price * (1 - discount/100)).toFixed(2);
+                
+                document.getElementById('selectionDetails').innerHTML = `
+                    <p>You have selected Seat ${seatId} in Section ${section}</p>
+                `;
+                
+                document.getElementById('selectedSection').textContent = section;
+                document.getElementById('selectedSeat').textContent = seatId;
+                document.getElementById('originalPrice').textContent = price.toFixed(2);
+                document.getElementById('discountedPrice').textContent = discountedPrice;
+                document.getElementById('priceSummary').style.display = 'block';
+            });
+        });
+        
+        // Proceed to checkout
+        document.getElementById('proceedToCheckout').addEventListener('click', function() {
+            if (!selectedSeat) {
+                alert('Please select a seat first!');
+                return;
+            }
+            
+            const seatId = selectedSeat.getAttribute('data-seat-id');
+            const section = selectedSeat.getAttribute('data-section');
+            const price = selectedSeat.getAttribute('data-price');
+            
+            // In a real app, you would send this data to server
+            // For demo purposes, we'll store it in localStorage
+            localStorage.setItem('selectedSeat', JSON.stringify({
+                gameId: gameId,
+                seatId: seatId,
+                section: section,
+                price: price
+            }));
+            
+            // Redirect to payment page
+            window.location.href = 'payment.html';
+        });
+    </script>
+</body>
+</html>
