@@ -1,4 +1,4 @@
-# ⚽ WVU Tech Soccer Ticketing System – Backend (Spring Boot)
+# WVU Tech Soccer Ticketing System – Backend (Spring Boot)
 
 This repository contains the **backend implementation** for the WVU Tech Soccer Ticketing System.  
 It is built using **Java** and **Spring Boot** and is designed to work with a separate frontend (HTML/CSS/JS).
